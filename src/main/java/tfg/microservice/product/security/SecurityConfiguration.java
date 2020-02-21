@@ -18,7 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.cors();
+		http.cors().disable();
 		http.csrf().disable();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/products/**").authenticated();
 		// http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
