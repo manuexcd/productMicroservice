@@ -43,19 +43,8 @@ public class Product implements Serializable {
 	private int stockAvailable;
 	@Column(unique = false, nullable = false)
 	private boolean isVisible = true;
-//	@ToString.Exclude
-//	@OneToOne
-//	private Image productImage;
-
-//	public Product(String name, String description, double price, int stockAvailable, boolean isVisible,
-//			Image productImage) {
-//		this.setName(name);
-//		this.setDescription(description);
-//		this.setPrice(price);
-//		this.setStockAvailable(stockAvailable);
-//		this.setVisible(isVisible);
-//		this.setProductImage(productImage);
-//	}
+	@Column(unique = false, nullable = false)
+	private boolean isReturnable = true;
 
 	public Product(String name, String description, double price, int stockAvailable, boolean isVisible) {
 		this.setName(name);
