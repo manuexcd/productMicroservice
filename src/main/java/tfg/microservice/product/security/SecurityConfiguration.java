@@ -21,6 +21,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.cors().disable();
 		http.csrf().disable();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/products/**").authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/products/**").authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/products/**").authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/products/**").authenticated();
 		// http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
 		http.addFilter(new JWTAuthorizationFilter(authenticationManager()));
 	}
