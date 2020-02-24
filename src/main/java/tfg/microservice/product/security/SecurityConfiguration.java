@@ -11,6 +11,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import tfg.microservice.product.model.Constants;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -20,11 +22,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.cors().disable();
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/products/**").authenticated();
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/products/**").authenticated();
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/products/**").authenticated();
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/products/**").authenticated();
-		// http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
+		http.authorizeRequests().antMatchers(HttpMethod.GET, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
 		http.addFilter(new JWTAuthorizationFilter(authenticationManager()));
 	}
 

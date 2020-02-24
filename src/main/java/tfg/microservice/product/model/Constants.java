@@ -8,6 +8,7 @@ public final class Constants {
 	public static final String PAGINATION_DEFAULT_SIZE = "5";
 
 	public static final String PATH_PRODUCTS = "/products";
+	public static final String PATH_PRODUCTS_WILDCARD = "/products/**";
 
 	public static final String PARAM_ID = "/{id}";
 	public static final String PARAM = "/{param}";
