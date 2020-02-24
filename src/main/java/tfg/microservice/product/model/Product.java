@@ -13,15 +13,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "product")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 4340552175235204140L;
@@ -29,16 +26,12 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
 	private long id;
-	@NonNull
 	@Column(unique = true, nullable = false, length = 30)
 	private String name;
-	@NonNull
 	@Column(unique = false, nullable = false, length = 200)
 	private String description;
-	@NonNull
 	@Column(unique = false, nullable = false)
 	private double price;
-	@NonNull
 	@Column(unique = false, nullable = true)
 	private int stockAvailable;
 	@Column(unique = false, nullable = false)
