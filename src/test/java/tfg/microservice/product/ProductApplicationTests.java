@@ -9,8 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ProductApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void main() {
+		ProductApplication.main(new String[] {});
 		assertTrue(true);
 	}
 
+	@Test
+	void contextLoads() {
+		assertTrue(true);
+	}
 }
