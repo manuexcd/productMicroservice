@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import tfg.microservice.product.model.Product;
 
-@Repository("ProductDAO")
+@Repository
 public interface ProductRepository extends MongoRepository<Product, Long> {
 
 	Optional<Product> findByName(String name);

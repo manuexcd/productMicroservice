@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -23,10 +24,14 @@ import tfg.microservice.product.model.Product;
 import tfg.microservice.product.repository.ProductRepository;
 
 @RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 public class ProductServiceTest {
 
 	@Mock
 	private ProductRepository dao;
+
+	@Mock
+	private SequenceGeneratorService sequenceGenerator;
 
 	@InjectMocks
 	private ProductServiceImpl service;
