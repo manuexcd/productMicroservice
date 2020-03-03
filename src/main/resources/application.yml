@@ -2,7 +2,7 @@ spring:
    application:
       name: productMicroservice
 server:
-   port: 8082
+   port: 8080
    ssl:
       enabled: false
       key-password: password
