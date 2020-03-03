@@ -17,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository products;
 
+	@Autowired
+	private SequenceGeneratorService sequenceService;
+
 	@Override
 	public Page<Product> getAllProducts(Pageable page) {
 		return products.findByIsVisibleTrue(page);
@@ -48,18 +51,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product getProduct(long id) throws ProductNotFoundException {
+	public Product getProduct(Long id) throws ProductNotFoundException {
 		return products.findById(id).orElseThrow(ProductNotFoundException::new);
 	}
 
 	@Override
 	public Product addProduct(Product product) {
+		if (product != null)
+			product.setId(sequenceService.generateSequence(Product.SEQUENCE_NAME));
 		return Optional.ofNullable(product).map(newProduct -> products.save(newProduct))
 				.orElseThrow(IllegalArgumentException::new);
 	}
 
 	@Override
-	public void deleteProduct(long id) {
+	public void deleteProduct(Long id) {
 		products.deleteById(id);
 	}
 }

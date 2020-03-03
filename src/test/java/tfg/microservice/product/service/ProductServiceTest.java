@@ -3,7 +3,7 @@ package tfg.microservice.product.service;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
@@ -71,14 +71,14 @@ public class ProductServiceTest {
 
 	@Test
 	public void testGetProductById() throws ProductNotFoundException {
-		given(dao.findById(anyLong())).willReturn(Optional.of(new Product()));
-		assertNotNull(service.getProduct(anyLong()));
+		given(dao.findById(any())).willReturn(Optional.of(new Product()));
+		assertNotNull(service.getProduct(any()));
 	}
 
 	@Test(expected = ProductNotFoundException.class)
 	public void testProductNotFound() throws ProductNotFoundException {
-		given(dao.findById(anyLong())).willReturn(Optional.ofNullable(null));
-		assertNull(service.getProduct(anyLong()));
+		given(dao.findById(any())).willReturn(Optional.ofNullable(null));
+		assertNull(service.getProduct(any()));
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class ProductServiceTest {
 	public void testDeleteProduct() {
 		Product product = new Product();
 		dao.save(product);
-		long id = product.getId();
+		Long id = product.getId();
 		service.deleteProduct(id);
 		assertFalse(dao.existsById(id));
 	}

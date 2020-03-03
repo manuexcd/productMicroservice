@@ -38,7 +38,7 @@ public class ProductRepositoryTest {
 
 	@Test
 	public void findById() {
-		assertNotNull(products.findById((long) 1));
+		assertNotNull(products.findById(Long.valueOf(1)));
 	}
 
 	@Test
