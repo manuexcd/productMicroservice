@@ -32,6 +32,7 @@ public class Product implements Serializable {
 	private int stockAvailable;
 	private boolean isVisible = true;
 	private boolean isReturnable = true;
+	private String imageUrl;
 
 	public Product(String name, String description, double price, int stockAvailable, boolean isVisible) {
 		this.setName(name);
