@@ -95,7 +95,7 @@ public class ProductController {
 
 	@PutMapping
 	public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto) {
-		return new ResponseEntity<>(mapper.mapEntityToDto(productManager.addProduct(mapper.mapDtoToEntity(dto))),
+		return new ResponseEntity<>(mapper.mapEntityToDto(productManager.updateProduct(mapper.mapDtoToEntity(dto))),
 				HttpStatus.OK);
 	}
 

@@ -97,7 +97,6 @@ public class ProductControllerTest {
 		product.setPrice(10);
 		product.setStockAvailable(100);
 		String body = "{\n	\"name\":\"prueba\",\n	\"description\":\"prueba\"\n}";
-		given(service.addProduct(any())).willReturn(product);
 		given(mapper.mapDtoToEntity(any())).willReturn(product);
 		mvc.perform(put("/products").content(body).contentType(APPLICATION_JSON)).andExpect(status().is2xxSuccessful());
 	}

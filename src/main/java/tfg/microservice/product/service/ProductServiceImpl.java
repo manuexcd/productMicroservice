@@ -64,6 +64,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public Product updateProduct(Product product) {
+		return Optional.ofNullable(product).map(productUpdated -> products.save(productUpdated))
+				.orElseThrow(IllegalArgumentException::new);
+	}
+
+	@Override
 	public void deleteProduct(Long id) {
 		products.deleteById(id);
 	}

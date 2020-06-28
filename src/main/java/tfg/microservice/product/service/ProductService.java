@@ -22,6 +22,8 @@ public interface ProductService {
 	public Product getProduct(Long id) throws ProductNotFoundException;
 
 	public Product addProduct(Product product);
+	
+	public Product updateProduct(Product product);
 
 	public void deleteProduct(Long id);
 }
