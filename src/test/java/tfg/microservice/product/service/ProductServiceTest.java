@@ -93,6 +93,18 @@ public class ProductServiceTest {
 		assertNotNull(service.addProduct(product));
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddProductException() {
+		assertNotNull(service.addProduct(null));
+	}
+
+	@Test
+	public void testUpdateProduct() {
+		Product product = new Product();
+		given(dao.save(product)).willReturn(product);
+		assertNotNull(service.updateProduct(product));
+	}
+
 	@Test
 	public void testDeleteProduct() {
 		Product product = new Product();

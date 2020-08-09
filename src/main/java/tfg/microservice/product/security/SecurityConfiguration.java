@@ -22,7 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.cors().disable();
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers(HttpMethod.GET, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, Constants.PATH_PRODUCTS_WILDCARD).permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.POST, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, Constants.PATH_PRODUCTS_WILDCARD).authenticated();
