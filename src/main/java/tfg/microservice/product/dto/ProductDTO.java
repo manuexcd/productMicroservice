@@ -3,6 +3,7 @@ package tfg.microservice.product.dto;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class ProductDTO implements Serializable {
 	private String description;
 	private double price;
 	private int stockAvailable;
-	private boolean isVisible = true;
+	@JsonProperty
+	private boolean isVisible;
 	private String imageUrl;
 }
