@@ -19,9 +19,11 @@ public interface ProductService {
 
 	public Page<Product> getProductsByParam(String param, Pageable page);
 
-	public Product getProduct(long id) throws ProductNotFoundException;
+	public Product getProduct(Long id) throws ProductNotFoundException;
 
 	public Product addProduct(Product product);
+	
+	public Product updateProduct(Product product);
 
-	public void deleteProduct(long id);
+	public void deleteProduct(Long id);
 }

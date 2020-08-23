@@ -85,7 +85,7 @@ public class ProductController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> getProduct(@PathVariable long id) throws ProductNotFoundException {
+	public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) throws ProductNotFoundException {
 		try {
 			return new ResponseEntity<>(mapper.mapEntityToDto(productManager.getProduct(id)), HttpStatus.OK);
 		} catch (ProductNotFoundException e) {
@@ -93,9 +93,9 @@ public class ProductController {
 		}
 	}
 
-	@PutMapping(value = "/{id}")
+	@PutMapping
 	public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO dto) {
-		return new ResponseEntity<>(mapper.mapEntityToDto(productManager.addProduct(mapper.mapDtoToEntity(dto))),
+		return new ResponseEntity<>(mapper.mapEntityToDto(productManager.updateProduct(mapper.mapDtoToEntity(dto))),
 				HttpStatus.OK);
 	}
 
@@ -106,7 +106,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> deleteProduct(@PathVariable long id) {
+	public ResponseEntity<ProductDTO> deleteProduct(@PathVariable Long id) {
 		productManager.deleteProduct(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

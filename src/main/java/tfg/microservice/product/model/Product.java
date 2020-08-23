@@ -2,60 +2,37 @@ package tfg.microservice.product.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
-@Entity
-@Table(name = "product")
+@Document(collection = "products")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 4340552175235204140L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
-	private long id;
-	@NonNull
-	@Column(unique = true, nullable = false, length = 30)
-	private String name;
-	@NonNull
-	@Column(unique = false, nullable = false, length = 200)
-	private String description;
-	@NonNull
-	@Column(unique = false, nullable = false)
-	private double price;
-	@NonNull
-	@Column(unique = false, nullable = true)
-	private int stockAvailable;
-	@Column(unique = false, nullable = false)
-	private boolean isVisible = true;
-//	@ToString.Exclude
-//	@OneToOne
-//	private Image productImage;
 
-//	public Product(String name, String description, double price, int stockAvailable, boolean isVisible,
-//			Image productImage) {
-//		this.setName(name);
-//		this.setDescription(description);
-//		this.setPrice(price);
-//		this.setStockAvailable(stockAvailable);
-//		this.setVisible(isVisible);
-//		this.setProductImage(productImage);
-//	}
+	@Transient
+	public static final String SEQUENCE_NAME = "users_sequence";
+	@Id
+	private Long id;
+	@Indexed(unique = true)
+	private String name;
+	@Indexed(unique = true)
+	private String description;
+	private double price;
+	private int stockAvailable;
+	private boolean isVisible = true;
+	private boolean isReturnable = true;
+	private String imageUrl;
 
 	public Product(String name, String description, double price, int stockAvailable, boolean isVisible) {
 		this.setName(name);

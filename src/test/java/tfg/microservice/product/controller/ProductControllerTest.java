@@ -1,7 +1,6 @@
 package tfg.microservice.product.controller;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -80,13 +79,13 @@ public class ProductControllerTest {
 		product.setDescription("prueba");
 		product.setPrice(10);
 		product.setStockAvailable(100);
-		given(service.getProduct(anyLong())).willReturn(product);
+		given(service.getProduct(any())).willReturn(product);
 		mvc.perform(get("/products/1").contentType(APPLICATION_JSON)).andExpect(status().isOk());
 	}
 
 	@Test
 	public void testGetProductByIdNotFound() throws Exception {
-		given(service.getProduct(anyLong())).willThrow(new ProductNotFoundException());
+		given(service.getProduct(any())).willThrow(new ProductNotFoundException());
 		mvc.perform(get("/products/1").contentType(APPLICATION_JSON)).andExpect(status().isNotFound());
 	}
 
@@ -98,10 +97,8 @@ public class ProductControllerTest {
 		product.setPrice(10);
 		product.setStockAvailable(100);
 		String body = "{\n	\"name\":\"prueba\",\n	\"description\":\"prueba\"\n}";
-		given(service.addProduct(any())).willReturn(product);
 		given(mapper.mapDtoToEntity(any())).willReturn(product);
-		mvc.perform(put("/products/1").content(body).contentType(APPLICATION_JSON))
-				.andExpect(status().is2xxSuccessful());
+		mvc.perform(put("/products").content(body).contentType(APPLICATION_JSON)).andExpect(status().is2xxSuccessful());
 	}
 
 	@Test

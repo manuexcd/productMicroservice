@@ -1,38 +1,5 @@
 spring:
    application:
       name: productMicroservice
-   jpa:
-      database: mysql
-      hibernate:
-         ddl-auto: update
-         dialect: org.hibernate.dialect.MySQL5Dialect
-   datasource:
-      url: jdbc:mysql://localhost:3306/productMicroservice?autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      username: tfg
-      password: tfg
 server:
-   port: 8081
----
-spring:
-   profiles: docker
-   jpa:
-      database: mysql
-      hibernate:
-         ddl-auto: update
-         dialect: org.hibernate.dialect.MySQL5Dialect
-   datasource:
-      url: jdbc:mysql://mysql:3306/tfg?autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      username: docker
-      password: docker
----
-spring:
-   profiles: kubernetes
-   jpa:
-      database: mysql
-      hibernate:
-         ddl-auto: update
-         dialect: org.hibernate.dialect.MySQL5Dialect
-   datasource:
-      url: jdbc:mysql://mysql:3306/tfg?autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      username: docker
-      password: docker
+   port: 8080
